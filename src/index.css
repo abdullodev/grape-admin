@@ -3,6 +3,90 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animation-fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: #fafafa;
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: #42b2d7;
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --accent: #fafafa;
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.705 0.015 286.067);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: #042d3b;
+  --sidebar-primary: #42b2d7;
+  --sidebar-primary-foreground: #dfe2e3;
+  --sidebar-accent: #e9e9e9;
+  --sidebar-accent-foreground: #0c779a;
+  --sidebar-border: oklch(0.92 0.004 286.32);
+  --sidebar-ring: oklch(0.705 0.015 286.067);
+  --header: #fafafa;
+}
+
+.dark {
+  --background: #232529;
+  --foreground: oklch(0.985 0 0);
+  --card: #292c31;
+  --card-foreground: oklch(0.985 0 0);
+  --popover: #232529;
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: #2697b0;
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: #232529;
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: #292c31;
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 15%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.552 0.016 285.938);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: #292c31;
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #2697b0;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: #232529;
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.552 0.016 285.938);
+  --header: #292c31;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -41,173 +125,11 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-:root {
-  --radius: 0.3125rem; /* 5px to match fieldRadius */
-
-  /* Base background / text - Light mode */
-  --background: #ffffff; /* Clean white */
-  --foreground: #1a1f26; /* Dark text from your theme */
-
-  /* Cards / surfaces */
-  --card: #f8f9fa; /* Light background for cards */
-  --card-foreground: var(--foreground);
-
-  --popover: var(--card);
-  --popover-foreground: var(--foreground);
-
-  /* Primary - Updated to Vivid Sky Blue */
-  --primary: #0ea5e9; /* Modern, vibrant blue */
-  --primary-foreground: #ffffff; /* White text on blue */
-
-  /* Secondary - Light gray system */
-  --secondary: #f1f5f9; /* Light gray background */
-  --secondary-foreground: #64748b; /* Medium gray text */
-
-  /* Muted - Subtle backgrounds and text */
-  --muted: #f8fafc; /* Very light gray */
-  --muted-foreground: #94a3b8; /* Muted text */
-
-  /* Accent - Interactive elements */
-  --accent: #eff6ff; /* Light blue for hover */
-  --accent-foreground: #1e40af; /* Dark blue text */
-
-  /* Status colors - Professional palette */
-  --success: #10b981; /* Green */
-  --success-foreground: #ffffff;
-
-  --info: #06b6d4; /* Cyan blue for info */
-  --info-foreground: #ffffff;
-
-  --warning: #f59e0b; /* Amber for warnings */
-  --warning-foreground: #ffffff;
-
-  --destructive: #ef4444; /* Red */
-  --destructive-foreground: #ffffff;
-
-  /* Borders / inputs */
-  --border: #e2e8f0; /* Light border */
-  --input: #f8fafc; /* Input background */
-  --ring: #0ea5e9; /* Updated to match primary */
-
-  /* Sidebar - Light mode */
-  --sidebar: #f8fafc; /* Light sidebar */
-  --sidebar-foreground: var(--foreground);
-  --sidebar-primary: #0ea5e9; /* Updated to match primary */
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #e0f2fe; /* Light blue hover, adjusted for new primary */
-  --sidebar-accent-foreground: var(--foreground);
-  --sidebar-border: #e2e8f0; /* Light border */
-  --sidebar-ring: #0ea5e9; /* Updated to match primary */
-
-  /* Chart colors - Updated to include new primary */
-  --chart-1: #0ea5e9; /* Primary blue */
-  --chart-2: #10b981; /* Success green */
-  --chart-3: #8b5cf6; /* Purple */
-  --chart-4: #f59e0b; /* Warning amber */
-  --chart-5: #ef4444; /* Red */
-}
-
-.dark {
-  /* Base - Using your theme colors */
-  --background: #1a1f26; /* mainBgColor */
-  --foreground: #dde1e6; /* mainTextColor */
-
-  /* Cards - Using elementBgColor */
-  --card: #242a33; /* elementBgColor */
-  --card-foreground: var(--foreground);
-
-  --popover: #252e3a; /* tooltipBgColor */
-  --popover-foreground: var(--foreground);
-
-  /* Primary - Updated to Vivid Sky Blue */
-  --primary: #0ea5e9; /* Modern, vibrant blue */
-  --primary-foreground: #ffffff; /* Clean white */
-
-  /* Secondary - Using your theme grays */
-  --secondary: #2c323c; /* tabBgColorSecondary */
-  --secondary-foreground: #a0a8b3; /* secondaryTextColor */
-
-  /* Muted - Subtle dark variants */
-  --muted: #242a33; /* elementBgColor */
-  --muted-foreground: #a0a8b3; /* secondaryTextColor */
-
-  /* Accent - Blue tinted interactions */
-  --accent: rgba(14, 165, 233, 0.1); /* Blue with opacity, adjusted for new primary */
-  --accent-foreground: #0ea5e9; /* Updated to match primary */
-
-  /* Status colors - Using your error color and complementary colors */
-  --success: #10b981; /* Modern green */
-  --success-foreground: #ffffff;
-
-  --info: #06b6d4; /* Cyan for info */
-  --info-foreground: #ffffff;
-
-  --warning: #f59e0b; /* Amber for warnings */
-  --warning-foreground: #1a1f26; /* Dark background text */
-
-  --destructive: #f2746b; /* errorTextColor */
-  --destructive-foreground: #ffffff;
-
-  /* Borders / inputs - Using your border colors */
-  --border: #3b434e; /* borderColor */
-  --input: #242a33; /* formBgColor */
-  --ring: #0ea5e9; /* Updated to match primary */
-
-  /* Sidebar - Using your sidebar colors */
-  --sidebar: #1a1f26; /* sidebar primaryBgColor */
-  --sidebar-foreground: #c2c6cb; /* sidebar mainTextColor */
-  --sidebar-primary: #0ea5e9; /* Updated to match primary */
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: rgba(14, 165, 233, 0.1); /* Blue hover, adjusted for new primary */
-  --sidebar-accent-foreground: #0ea5e9; /* Updated to match primary */
-  --sidebar-border: #3b434e; /* borderColor */
-  --sidebar-ring: #0ea5e9; /* Updated to match primary */
-
-  /* Chart colors - Updated to include new primary */
-  --chart-1: #0ea5e9; /* Primary blue */
-  --chart-2: #10b981; /* Success green */
-  --chart-3: #8b5cf6; /* Purple */
-  --chart-4: #f59e0b; /* Warning amber */
-  --chart-5: #f2746b; /* Your error red */
-}
-
-/* Enhanced scrollbar styling */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: oklch(0.4 0.01 256) transparent;
-}
-
-*::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background: oklch(0.4 0.01 256);
-  border-radius: 3px;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.3 0.015 256);
-}
-
-.dark *::-webkit-scrollbar-thumb {
-  background: oklch(0.6 0.01 256);
-}
-
-.dark *::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.7 0.015 256);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground;
   }
 }
